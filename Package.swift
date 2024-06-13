@@ -26,7 +26,7 @@ let package = Package(
       ),
       .package(
         url: "https://github.com/SwiftyJSON/SwiftyJSON.git",
-        from: "4.0.0"
+        .upToNextMajor(from: "5.0.0")
       ),
     ],
     targets: [
