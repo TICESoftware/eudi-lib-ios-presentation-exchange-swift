@@ -15,7 +15,7 @@
  */
 import Foundation
 
-public struct DescriptorMap: Codable {
+public struct DescriptorMapEntry: Codable {
   let id: String
   let format: String
   let path: String
