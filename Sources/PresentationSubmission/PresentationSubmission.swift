@@ -35,7 +35,7 @@ public struct PresentationSubmissionContainer: Codable {
 public struct PresentationSubmission: Codable {
   public let id: String
   public let definitionID: String
-  public let descriptorMap: [DescriptorMap]
+  public let descriptorMap: [DescriptorMapEntry]
 
   enum CodingKeys: String, CodingKey {
     case id
@@ -46,7 +46,7 @@ public struct PresentationSubmission: Codable {
   public init(
     id: String,
     definitionID: String,
-    descriptorMap: [DescriptorMap]
+    descriptorMap: [DescriptorMapEntry]
   ) {
     self.id = id
     self.definitionID = definitionID
