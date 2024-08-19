@@ -16,7 +16,8 @@
 import Foundation
 
 public enum Rule: String, Codable {
-  case all
-  case pick
-  case none
+  // TODO: Not sure, if it should be uppercase, but one team is sending it like this. Maybe do case insensitiv access in dictionary?
+  case all = "ALL"
+  case pick = "PICK"
+  case none = "NONE"
 }

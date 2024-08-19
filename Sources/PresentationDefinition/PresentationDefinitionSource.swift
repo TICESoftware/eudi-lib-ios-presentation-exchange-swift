@@ -26,9 +26,14 @@ public extension PresentationDefinitionSource {
     if let presentationDefinitionObject = authorizationRequestObject[Constants.PRESENTATION_DEFINITION] as? JSONObject {
 
       let jsonData = try JSONSerialization.data(withJSONObject: presentationDefinitionObject, options: [])
-      let presentationDefinition = try JSONDecoder().decode(PresentationDefinition.self, from: jsonData)
-
-      self = .passByValue(presentationDefinition: presentationDefinition)
+      do {
+        let presentationDefinition = try JSONDecoder().decode(PresentationDefinition.self, from: jsonData)
+        self = .passByValue(presentationDefinition: presentationDefinition)
+      } catch {
+        print(String(data: jsonData, encoding: .utf8)!)
+        print(error)
+        throw error
+      }
     } else if let uri = authorizationRequestObject[Constants.PRESENTATION_DEFINITION_URI] as? String,
               let uri = URL(string: uri) {
       self = .fetchByReference(url: uri)
