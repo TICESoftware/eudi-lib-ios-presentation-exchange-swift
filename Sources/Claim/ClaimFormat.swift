@@ -15,6 +15,7 @@
  */
 public enum ClaimFormat: Equatable, Hashable {
   case msoMdoc
+  case msoMdocZkp
   case jwtType(JWTType)
   case ldpType(LDPType)
   case sdJWT(SDJWTType)
@@ -39,6 +40,7 @@ public enum ClaimFormat: Equatable, Hashable {
   public var formatIdentifier: String {
     switch self {
     case .msoMdoc: "mso_mdoc"
+    case .msoMdocZkp: "mso_mdoc+zkp"
     case .jwtType(let jwtType):
       switch jwtType {
       case .jwt: "jwt"
@@ -62,6 +64,7 @@ public enum ClaimFormat: Equatable, Hashable {
   public init?(formatIdentifier: String) {
     switch formatIdentifier {
     case "mso_mdoc": self = .msoMdoc
+    case "mso_mdoc+zkp": self = .msoMdocZkp
     case "jwt": self = .jwtType(.jwt)
     case "jwt_vc": self = .jwtType(.jwt_vc)
     case "jwt_vp": self = .jwtType(.jwt_vp)
